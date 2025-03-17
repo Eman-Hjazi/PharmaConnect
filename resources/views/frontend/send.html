@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إرسال رمز التأكيد</title>
+    <link rel="stylesheet" href="css/style.css">
+ 
+</head>
+<body>
+    <div class="send-page">
+
+        <div class="card-send-page">
+            <span class="close">&times;</span>
+            <h1>تأكيد حسابك</h1>
+            <p>تم إرسال رمز التحقق إلى عنوان بريدك الإلكتروني.</p>
+            <div class="code-inputs">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+                <input type="text" maxlength="1" class="code">
+            </div>
+            <button id="sendButton">إرسال</button>
+            <div id="countdownContainer" class="countdown-container">
+                <div id="countdown" class="countdown">الرجاء الانتظار 60 ثانية قبل إعادة الإرسال.</div>
+            </div>
+            <div id="resendLinkContainer" class="resend-container">
+                <div class="resend" id="resendLink">إعادة إرسال</div>
+            </div>
+        </div>
+
+    </div>
+  
+
+  <script src="js/send.js"></script>
+</body>
+</html>
