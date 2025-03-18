@@ -1,0 +1,109 @@
+
+    .badge {
+        font-size: 0.9rem;
+    }
+
+    .card {
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .btn-animated {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-animated:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+    }
+
+    .btn-animated::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: shine 1s infinite;
+    }
+
+    @keyframes shine {
+        0% {
+            left: -100%;
+        }
+
+        20% {
+            left: 100%;
+        }
+
+        100% {
+            left: 100%;
+        }
+    }
+
+    .modal-content {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .modal-header {
+        padding: 10px 15px;
+        background-color: #f1f3f5;
+        position: relative;
+    }
+
+    /* زر الإغلاق البسيط */
+    .simple-close-btn {
+        background: none;
+        border: none;
+        color: #000;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        line-height: 1;
+    }
+
+    .simple-close-btn:hover {
+        color: #333;
+    }
+
+    .simple-close-btn span {
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #6c757d;
+        box-shadow: 0 0 5px rgba(108, 117, 125, 0.3);
+    }
+
+    .invalid-feedback {
+        display: none;
+    }
+
+    .needs-validation .form-control:invalid,
+    .needs-validation .form-select:invalid {
+        border-color: #dc3545;
+    }
+
+    .needs-validation .form-control:invalid+.invalid-feedback,
+    .needs-validation .form-select:invalid+.invalid-feedback {
+        display: block;
+    }
+
+    .needs-validation:invalid {
+        border-color: #dc3545;
+    }

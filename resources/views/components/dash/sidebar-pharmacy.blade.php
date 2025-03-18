@@ -94,12 +94,7 @@
 
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="notifications.html">
-            <i class="fa-solid fa-bell"></i>
-            <span>الإشعارات</span>
-        </a>
-    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

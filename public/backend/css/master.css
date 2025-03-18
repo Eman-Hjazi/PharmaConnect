@@ -1,0 +1,39 @@
+
+        body {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .sidebar .nav-item .nav-link {
+            text-align: right;
+        }
+
+        .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
+            float: left;
+            transform: rotate(180deg);
+            /* تصحيح الخطأ الإملائي */
+        }
+
+        .ml-auto,
+        .mx-auto {
+            margin-left: unset !important;
+            margin-right: auto !important;
+        }
+
+        .topbar .dropdown .dropdown-menu {
+            right: 0;
+            /* ضبط الموقع للقائمة المنسدلة */
+            left: auto;
+        }
+
+        .nav-link {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dropdown-menu {
+            text-align: right;
+            right: 0 !important;
+            left: auto !important;
+        }

@@ -1,4 +1,3 @@
-{{-- resources/views/pharmacy/orders --}}
 <x-dash.master>
     <div class="container py-6">
         <div class="bg-white shadow-md rounded-lg p-4">

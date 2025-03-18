@@ -80,15 +80,167 @@ class PharmacyController extends Controller
     }
 
 
+    // public function updateProfile(Request $request)
+    // {
+    //     // التحقق من صحة البيانات
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'current-password' => 'required_with:password|current_password:pharmacy', // التحقق من كلمة المرور الحالية
+    //         'password' => 'nullable|min:8|confirmed',
+    //         'image' => 'sometimes|image|max:2048', // صورة بحد أقصى 2MB
+    //     ], [
+    //         'current-password.current_password' => 'كلمة المرور الحالية غير صحيحة.',
+    //         'password.confirmed' => 'كلمة المرور وتأكيدها غير متطابقتين.',
+    //         'image.image' => 'الملف المحدد ليس صورة.',
+    //         'image.max' => 'حجم الصورة لا يجب أن يزيد عن 2 ميجابايت.',
+    //     ]);
+
+    //     try {
+
+
+
+    //         /** @var Pharmacy $pharmacy  */
+    //         // جلب الصيدلية الحالية
+    //         $pharmacy = auth('pharmacy')->user();
+
+    //         if (!$pharmacy) {
+    //             return response()->json([
+    //                 'success' => false,
+    //                 'message' => 'لم يتم العثور على الصيدلية.'
+    //             ], 404);
+    //         }
+
+    //         // بيانات التحديث
+    //         $data = [
+    //             'name' => $request->name,
+    //         ];
+
+    //         // تحديث كلمة المرور إذا تم إرسالها
+    //         if ($request->filled('password')) {
+    //             $data['password'] = Hash::make($request->password);
+    //         }
+
+    //         // تحديث بيانات الصيدلية
+    //         $pharmacy->update($data);
+
+    //         // معالجة الصورة إذا تم رفعها
+    //         if ($request->hasFile('image')) {
+    //             // حذف الصورة القديمة إذا كانت موجودة
+    //             if ($pharmacy->image) {
+    //                 Storage::disk('public')->delete('pharmacy/' . $pharmacy->image->path);
+    //                 $pharmacy->image()->delete();
+    //             }
+
+    //             // رفع الصورة الجديدة
+    //             $imgName = time() . '_' . $request->file('image')->getClientOriginalName();
+    //             $request->file('image')->storeAs('pharmacy', $imgName, 'public');
+
+    //             // إنشاء سجل جديد في جدول images باستخدام العلاقة المورفية
+    //             $pharmacy->image()->create([
+    //                 'path' => $imgName,
+    //             ]);
+    //         }
+
+    //         // إرجاع الرد باستخدام SweetAlert
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'تم تحديث الملف الشخصي بنجاح!'
+    //         ]);
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'حدث خطأ أثناء تحديث الملف الشخصي: ' . $e->getMessage()
+    //         ], 500);
+    //     }
+    // }
+
+    // public function updateProfile(Request $request)
+    // {
+    //     // التحقق من صحة البيانات
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'address' => 'nullable|string|max:255', // التحقق من العنوان
+    //         'description' => 'nullable|string', // التحقق من الوصف
+    //         'current-password' => 'required_with:password|current_password:pharmacy', // التحقق من كلمة المرور الحالية
+    //         'password' => 'nullable|min:8|confirmed',
+    //         'image' => 'sometimes|image|max:2048', // صورة بحد أقصى 2MB
+    //     ], [
+    //         'current-password.current_password' => 'كلمة المرور الحالية غير صحيحة.',
+    //         'password.confirmed' => 'كلمة المرور وتأكيدها غير متطابقتين.',
+    //         'image.image' => 'الملف المحدد ليس صورة.',
+    //         'image.max' => 'حجم الصورة لا يجب أن يزيد عن 2 ميجابايت.',
+    //     ]);
+
+    //     try {
+    //         /** @var Pharmacy $pharmacy  */
+    //         // جلب الصيدلية الحالية
+    //         $pharmacy = auth('pharmacy')->user();
+
+    //         if (!$pharmacy) {
+    //             return response()->json([
+    //                 'success' => false,
+    //                 'message' => 'لم يتم العثور على الصيدلية.'
+    //             ], 404);
+    //         }
+
+    //         // بيانات التحديث
+    //         $data = [
+    //             'name' => $request->name,
+    //             'address' => $request->address, // إضافة العنوان
+    //             'description' => $request->description, // إضافة الوصف
+    //         ];
+
+    //         // تحديث كلمة المرور إذا تم إرسالها
+    //         if ($request->filled('password')) {
+    //             $data['password'] = Hash::make($request->password);
+    //         }
+
+    //         // تحديث بيانات الصيدلية
+    //         $pharmacy->update($data);
+
+    //         // معالجة الصورة إذا تم رفعها
+    //         if ($request->hasFile('image')) {
+    //             // حذف الصورة القديمة إذا كانت موجودة
+    //             if ($pharmacy->image) {
+    //                 Storage::disk('public')->delete('pharmacy/' . $pharmacy->image->path);
+    //                 $pharmacy->image()->delete();
+    //             }
+
+    //             // رفع الصورة الجديدة
+    //             $imgName = time() . '_' . $request->file('image')->getClientOriginalName();
+    //             $request->file('image')->storeAs('pharmacy', $imgName, 'public');
+
+    //             // إنشاء سجل جديد في جدول images باستخدام العلاقة المورفية
+    //             $pharmacy->image()->create([
+    //                 'path' => $imgName,
+    //             ]);
+    //         }
+
+    //         // إرجاع الرد باستخدام SweetAlert
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'تم تحديث الملف الشخصي بنجاح!'
+    //         ]);
+    //     } catch (\Exception $e) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'حدث خطأ أثناء تحديث الملف الشخصي: ' . $e->getMessage()
+    //         ], 500);
+    //     }
+    // }
+
     public function updateProfile(Request $request)
     {
         // التحقق من صحة البيانات
         $request->validate([
             'name' => 'required|string|max:255',
-            'current-password' => 'required_with:password|current_password:pharmacy', // التحقق من كلمة المرور الحالية
+            'address' => 'required|string|max:255', // جعل الحقل مطلوبًا
+            'description' => 'nullable|string',
+            'current-password' => 'required_with:password|current_password:pharmacy',
             'password' => 'nullable|min:8|confirmed',
-            'image' => 'sometimes|image|max:2048', // صورة بحد أقصى 2MB
+            'image' => 'sometimes|image|max:2048',
         ], [
+            'address.required' => 'حقل العنوان مطلوب.', // رسالة خطأ مخصصة
             'current-password.current_password' => 'كلمة المرور الحالية غير صحيحة.',
             'password.confirmed' => 'كلمة المرور وتأكيدها غير متطابقتين.',
             'image.image' => 'الملف المحدد ليس صورة.',
@@ -96,9 +248,6 @@ class PharmacyController extends Controller
         ]);
 
         try {
-
-
-
             /** @var Pharmacy $pharmacy  */
             // جلب الصيدلية الحالية
             $pharmacy = auth('pharmacy')->user();
@@ -113,6 +262,8 @@ class PharmacyController extends Controller
             // بيانات التحديث
             $data = [
                 'name' => $request->name,
+                'address' => $request->address, // التأكد من وجود قيمة
+                'description' => $request->description,
             ];
 
             // تحديث كلمة المرور إذا تم إرسالها

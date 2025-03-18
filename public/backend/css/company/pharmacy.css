@@ -1,0 +1,54 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* تحسين مظهر الجدول */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th, td {
+    transition: all 0.2s ease;
+}
+
+/* زر الحذف */
+button.bg-red-500 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* تحسين الصورة */
+img.rounded-lg {
+    transition: transform 0.2s ease;
+}
+
+img.rounded-lg:hover {
+    transform: scale(1.05);
+}
+
+/* تحسين التصميم المتجاوب */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        font-size: 0.875rem;
+        padding: 0.75rem 1rem;
+    }
+
+    img {
+        width: 5rem;
+        height: 3.5rem;
+    }
+
+    button.bg-red-500 {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}

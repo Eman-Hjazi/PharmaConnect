@@ -15,48 +15,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
+       <!-- إضافة Animate.css -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="{{ asset('backend/css/master.css') }}" rel="stylesheet">
+
+    <!-- إضافة خطوط حديثة (اختياري) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     @yield('css')
 
-    <style>
-        body {
-            direction: rtl;
-            text-align: right;
-        }
 
-        .sidebar .nav-item .nav-link {
-            text-align: right;
-        }
-
-        .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
-            float: left;
-            transform: rotate(180deg);
-            /* تصحيح الخطأ الإملائي */
-        }
-
-        .ml-auto,
-        .mx-auto {
-            margin-left: unset !important;
-            margin-right: auto !important;
-        }
-
-        .topbar .dropdown .dropdown-menu {
-            right: 0;
-            /* ضبط الموقع للقائمة المنسدلة */
-            left: auto;
-        }
-
-        .nav-link {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .dropdown-menu {
-            text-align: right;
-            right: 0 !important;
-            left: auto !important;
-        }
-    </style>
 </head>
 
 <body id="page-top">
@@ -93,7 +60,7 @@
                                 $profileRoute = 'pharmacy.profile';
                                 $logoutRoute = 'pharmacy.logout';
                                 $imageSrc = $user->image
-                                    ? asset('storage/' . $user->image->path)
+                                    ? asset('storage/pharmacy/' . $user->image->path)
                                     : 'https://via.placeholder.com/150';
                             } elseif (auth('company')->check()) {
                                 $user = auth('company')->user();
@@ -157,56 +124,22 @@
     </a>
 
     <!-- Scripts -->
+    <!-- Inside <body> before @stack('scripts') -->
+    <script>
+        window.App = {
+            csrfToken: '{{ csrf_token() }}'
+        };
+    </script>
+
+    <!-- Existing Scripts -->
     <script src="{{ asset('backend/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('backend/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script src="{{ asset('backend/js/master.js') }}"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const logoutLink = document.querySelector('[data-target="#logoutModal"]');
-            if (logoutLink) {
-                logoutLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const logoutRoute = this.getAttribute('data-logout-route');
-
-                    Swal.fire({
-                        title: 'تأكيد تسجيل الخروج',
-                        text: "هل أنتَ متأكد أنك تريد تسجيل الخروج؟",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'نعم، تسجيل الخروج',
-                        cancelButtonText: 'إلغاء'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            document.getElementById('logoutForm').action = logoutRoute;
-                            document.getElementById('logoutForm').submit();
-                        }
-                    });
-                });
-            }
-
-            if (!document.getElementById('logoutForm')) {
-                const form = document.createElement('form');
-                form.id = 'logoutForm';
-                form.method = 'POST';
-                form.style.display = 'none';
-
-                const csrfToken = document.createElement('input');
-                csrfToken.type = 'hidden';
-                csrfToken.name = '_token';
-                csrfToken.value = '{{ csrf_token() }}';
-
-                form.appendChild(csrfToken);
-                document.body.appendChild(form);
-            }
-
-
-        });
-    </script>
+    @stack('scripts')
 </body>
 
 </html>

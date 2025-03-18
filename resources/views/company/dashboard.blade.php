@@ -10,7 +10,8 @@
 
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ml-auto">
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-blue-500/50 flex items-center justify-between">
+            <div
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-blue-500/50 flex items-center justify-between">
                 <div>
                     <h2 class="text-sm font-semibold uppercase text-blue-600 tracking-wide">الطلبات الجديدة</h2>
                     <p class="text-4xl font-extrabold text-gray-900 mt-2">{{ $newOrders }}</p>
@@ -20,7 +21,8 @@
                 </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-500/50 flex items-center justify-between">
+            <div
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-green-500/50 flex items-center justify-between">
                 <div>
                     <h2 class="text-sm font-semibold uppercase text-green-600 tracking-wide">الصيدليات المسجلة</h2>
                     <p class="text-4xl font-extrabold text-gray-900 mt-2">{{ $pharmacies }}</p>
@@ -30,7 +32,8 @@
                 </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-cyan-500/50 flex items-center justify-between">
+            <div
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-cyan-500/50 flex items-center justify-between">
                 <div>
                     <h2 class="text-sm font-semibold uppercase text-cyan-600 tracking-wide">الأدوية المتوفرة</h2>
                     <p class="text-4xl font-extrabold text-gray-900 mt-2">{{ $availableMedicines }}</p>
@@ -40,7 +43,8 @@
                 </div>
             </div>
 
-            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-yellow-500/50 flex items-center justify-between">
+            <div
+                class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border-2 border-yellow-500/50 flex items-center justify-between">
                 <div>
                     <h2 class="text-sm font-semibold uppercase text-yellow-600 tracking-wide">إجمالي المبيعات</h2>
                     <p class="text-4xl font-extrabold text-gray-900 mt-2">{{ number_format($totalSales, 2) }}
@@ -56,7 +60,8 @@
         <div class="bg-white shadow-md rounded-2xl mt-10 overflow-hidden ml-10">
             <div class="px-6 py-4 border-b bg-gray-100 flex justify-between items-center">
                 <h2 class="text-lg font-bold text-gray-700">الطلبات الأخيرة</h2>
-                <a href="{{route('company.orders.index')}}" class="text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">عرض
+                <a href="{{ route('company.orders.index') }}"
+                    class="text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">عرض
                     الكل</a>
             </div>
             <div class="overflow-x-auto">

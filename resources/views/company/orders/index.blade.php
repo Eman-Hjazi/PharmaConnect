@@ -1,5 +1,6 @@
 <x-dash.master>
-    <div class="bg-white rounded-lg overflow-hidden mt-10 mx-10 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div
+        class="bg-white rounded-lg overflow-hidden mt-10 mx-10 shadow-sm hover:shadow-md transition-shadow duration-300">
         <h2 class="text-lg font-bold text-gray-700 p-2">طلبات الصيدليات
 
         </h2>
@@ -23,31 +24,36 @@
                             <td class="py-3 px-6">
                                 @switch($order->order_status)
                                     @case('pending')
-                                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">
+                                        <span
+                                            class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-700">
                                             قيد الانتظار
                                         </span>
                                     @break
 
                                     @case('completed')
-                                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-50 text-green-700">
+                                        <span
+                                            class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-50 text-green-700">
                                             مكتمل
                                         </span>
                                     @break
 
                                     @case('processing')
-                                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-yellow-50 text-yellow-700">
+                                        <span
+                                            class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-yellow-50 text-yellow-700">
                                             قيد المعالجة
                                         </span>
                                     @break
 
                                     @case('canceled')
-                                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-red-50 text-red-700">
+                                        <span
+                                            class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-red-50 text-red-700">
                                             ملغي
                                         </span>
                                     @break
 
                                     @default
-                                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-gray-50 text-gray-700">
+                                        <span
+                                            class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-gray-50 text-gray-700">
                                             {{ $order->order_status }}
                                         </span>
                                 @endswitch

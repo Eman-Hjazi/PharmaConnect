@@ -78,57 +78,5 @@
         </div>
     </div>
 
-    <!-- سكريبت AJAX & SweetAlert -->
-    <script>
-        document.getElementById('orderStatus').addEventListener('change', function() {
-            const orderId = this.getAttribute('data-order-id');
-            const newStatus = this.value;
-            const selectElement = this;
-
-            fetch(`/company/orders/${orderId}/update-status`, {
-                    method: 'PATCH',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        status: newStatus
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // تحديث الـ <select> ليعكس التغيير مباشرة دون إعادة تحميل الصفحة
-                        selectElement.value = newStatus;
-
-                        // تعطيل القائمة إذا كانت الحالة "مكتمل" أو "ملغي"
-                        if (newStatus === 'completed' || newStatus === 'canceled') {
-                            selectElement.setAttribute('disabled', true);
-                        }
-
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'تم التحديث!',
-                            text: 'تم تغيير حالة الطلب بنجاح.',
-                            confirmButtonText: 'موافق'
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'خطأ!',
-                            text: data.message,
-                            confirmButtonText: 'حسناً'
-                        });
-                    }
-                })
-                .catch(error => {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'خطأ!',
-                        text: 'لا يمكن الاتصال بالخادم.',
-                        confirmButtonText: 'حسناً'
-                    });
-                });
-        });
-    </script>
+    <script src="{{ asset('backend/js/company/showOrder.js') }}"></script>
 </x-dash.master>

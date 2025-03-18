@@ -62,14 +62,12 @@ class OrderController extends Controller
                 ], 403);
             }
 
-            // Validate request
             $request->validate([
                 'status' => 'required|in:pending,processing,completed,canceled'
             ]);
 
             $newStatus = $request->status;
 
-            // Check if status change is allowed
             if (in_array($order->order_status, ['completed', 'canceled'])) {
                 return response()->json([
                     'success' => false,
@@ -77,12 +75,10 @@ class OrderController extends Controller
                 ], 403);
             }
 
-            // Handle stock update for completed status
             if ($newStatus === 'completed') {
                 DB::beginTransaction();
 
                 foreach ($order->orderDetails as $detail) {
-                    // Check if the medicine exists in the pharmacy's inventory
                     $inventory = $pharmacy->inventories()
                         ->where('medicine_id', $detail->medicine_id)
                         ->first();
@@ -103,11 +99,7 @@ class OrderController extends Controller
                         ], 400);
                     }
 
-                    // Update stock
                     $inventory->quantity_in_stock -= $detail->quantity;
-                    $inventory->save();
-
-                    // Update status based on quantity
                     $inventory->status = ($inventory->quantity_in_stock <= $inventory->alert_threshold) ? 'قليل' : 'متوفر';
                     if ($inventory->quantity_in_stock <= 0) {
                         $inventory->status = 'نفذ';
@@ -118,35 +110,26 @@ class OrderController extends Controller
                 DB::commit();
             }
 
-            // Handle stock return for canceled status
             if ($newStatus === 'canceled') {
                 DB::beginTransaction();
 
-                foreach ($order->orderDetails as $detail) {
-                    $inventory = $pharmacy->inventories()
-                        ->where('medicine_id', $detail->medicine_id)
-                        ->first();
+                if ($order->order_status === 'completed') {
+                    foreach ($order->orderDetails as $detail) {
+                        $inventory = $pharmacy->inventories()
+                            ->where('medicine_id', $detail->medicine_id)
+                            ->first();
 
-                    if (!$inventory) {
-                        DB::rollBack();
-                        return response()->json([
-                            'success' => false,
-                            'message' => "الدواء: {$detail->medicine->name} غير متوفر في مخزون الصيدلية"
-                        ], 400);
+                        if ($inventory) {
+                            $inventory->quantity_in_stock += $detail->quantity;
+                            $inventory->status = ($inventory->quantity_in_stock <= $inventory->alert_threshold) ? 'قليل' : 'متوفر';
+                            $inventory->save();
+                        }
                     }
-
-                    $inventory->quantity_in_stock += $detail->quantity;
-                    $inventory->save();
-
-                    // Update status based on quantity
-                    $inventory->status = ($inventory->quantity_in_stock <= $inventory->alert_threshold) ? 'قليل' : 'متوفر';
-                    $inventory->save();
                 }
 
                 DB::commit();
             }
 
-            // Update order status
             $order->order_status = $newStatus;
             $order->save();
 
@@ -154,7 +137,6 @@ class OrderController extends Controller
                 'success' => true,
                 'message' => 'تم تحديث حالة الطلب بنجاح'
             ]);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
