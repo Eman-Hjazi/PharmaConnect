@@ -16,6 +16,8 @@
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    @yield('css')
 </head>
 
 <body>
@@ -139,7 +141,7 @@
             <!-- Bottom footer -->
             <div class="footer-bottom">
                 <div class="footer-links">
-                    <a href="/privacy" class="footer-link">سياسة الخصوصية</a>
+                    <a href="{{route('pharma-policies')}}" class="footer-link">سياسة الخصوصية</a>
                     <a href="/terms" class="footer-link">الشروط والأحكام</a>
                 </div>
                 <div class="copyright">
@@ -182,7 +184,12 @@
                 updateCartBadge();
             });
         });
+
     </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@yield('js')
 </body>
 
 </html>

@@ -60,6 +60,10 @@ class FrontendController extends Controller
     }
 
 
+    function policies(){
+        return view('frontend.pharma-policies');
+    }
+
 
 
 

@@ -1,7 +1,7 @@
 @foreach($pharmacies as $pharmacy)
     <div class="pharmacy-card">
         <div class="pharmacy-logo">
-            <img src="{{ $pharmacy->image ? asset('storage/' . $pharmacy->image->path) : asset('storage/pharmacy/pharma.png') }}" alt="{{ $pharmacy->name }} logo" />
+            <img src="{{ $pharmacy->image ? asset('storage/pharmacy/' . $pharmacy->image->path) : asset('storage/pharmacy/pharma.png') }}" alt="{{ $pharmacy->name }} logo" />
         </div>
         <h3 class="pharmacy-name">{{ $pharmacy->name }}</h3>
         <div class="pharmacy-info">

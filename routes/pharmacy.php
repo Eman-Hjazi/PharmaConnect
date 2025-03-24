@@ -12,13 +12,13 @@ use App\Http\Controllers\Pharmacy\Auth\AuthenticatedSessionController;
 
 Route::prefix('pharmacy')->name('pharmacy.')->group(function () {
     // المسارات العامة (غير مصادقة)
-    Route::middleware('guest:pharmacy')->group(function () {
-        Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
-        Route::post('register', [RegisteredUserController::class, 'store']);
+    // Route::middleware('guest:pharmacy')->group(function () {
+    //     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    //     Route::post('register', [RegisteredUserController::class, 'store']);
 
-        Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
-        Route::post('login', [AuthenticatedSessionController::class, 'store']);
-    });
+    //     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    //     Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    // });
 
     // المسارات المصادقة (لوحة التحكم والإدارة)
     Route::middleware('auth:pharmacy')->group(function () {
@@ -28,7 +28,6 @@ Route::prefix('pharmacy')->name('pharmacy.')->group(function () {
         // إدارة الأدوية
         Route::controller(MedicineController::class)->prefix('medicine')->name('medicine.')->group(function () {
             Route::get('index', 'index')->name('index');
-            Route::get('stock', 'stock')->name('stock');
             Route::post('order', 'order')->name('order'); // قد تحتاج إلى تعديل الدالة
         });
 

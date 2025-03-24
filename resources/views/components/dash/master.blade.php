@@ -67,7 +67,7 @@
                                 $profileRoute = 'company.profile';
                                 $logoutRoute = 'company.logout';
                                 $imageSrc = $user->image
-                                    ? asset('storage/company' . $user->image->path)
+                                    ? asset('storage/company/' . $user->image->path)
                                     : 'https://via.placeholder.com/150';
                             } else {
                                 $user = null;

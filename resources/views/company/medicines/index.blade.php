@@ -27,7 +27,7 @@
                     <div class="card h-100 border-0 shadow-sm rounded-4 animate__animated animate__fadeIn">
                         <div class="card-img-top position-relative">
                             <img src="{{ $medicine->image ? asset('storage/' . $medicine->image->path) : asset('storage/medicines/default-medicine.jpg') }}"
-                                class="card-img-top rounded-top-4 img-fluid" style="height: 200px; object-fit: cover;"
+                                class="card-img-top rounded-top-4 img-fluid"
                                 alt="{{ $medicine->name }}">
                             <span
                                 class="badge {{ $medicine->is_available ? 'bg-success' : 'bg-danger' }} text-white position-absolute top-0 start-0 m-2 p-2 rounded">

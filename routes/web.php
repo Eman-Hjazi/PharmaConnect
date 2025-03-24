@@ -5,7 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-
+use App\Http\Controllers\OrderController;
 
 // المسارات المتاحة للجميع (المسجلين وغير المسجلين)
 Route::controller(FrontendController::class)->group(function () {
@@ -16,6 +16,7 @@ Route::controller(FrontendController::class)->group(function () {
     Route::get('/ask','ask')->name('ask');
     Route::get('/search','search')->name('search');
     Route::get('/contact','connectus')->name('contact');
+    Route::get('/pharma-policies','policies')->name('pharma-policies');
 });
 
 // المسارات التي تتطلب أن يكون المستخدم غير مسجل (guest)
@@ -35,6 +36,13 @@ Route::controller(CartController::class)->name('cart.')->prefix('cart')->middlew
     Route::get('/count', 'getCartCount')->name('count');
     Route::post('/update/{id}', 'updateQuantity')->name('update'); // مسار جديد
     Route::delete('/remove/{id}', 'remove')->name('remove');
+});
+
+//order
+Route::controller(OrderController::class)->name('order.')->prefix('order')
+->middleware('auth')->group(function(){
+    Route::post('store','store')->name('store');
+
 });
 
 require __DIR__ . '/auth.php';

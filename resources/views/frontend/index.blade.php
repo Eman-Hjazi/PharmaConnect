@@ -1,7 +1,7 @@
-<x-front.main  :pharmacies="$pharmacies">
+<x-front.main :pharmacies="$pharmacies">
     <div class="section-one">
         <div class="container">
-            <form action="{{route('search')}}" method="GET" class="search-form">
+            <form action="{{ route('search') }}" method="GET" class="search-form">
                 <input type="text" class="form-input" placeholder="البحث" name="query">
                 <button type="submit" class="form-button">
                     <i class="fas fa-search"></i> ابحث
@@ -66,10 +66,11 @@
                 <i class="fas fa-chevron-right"></i>
             </button>
             <div class="pharmacy-cards" id="pharmacyCards">
-                @foreach($pharmacies as $pharmacy)
+                @foreach ($pharmacies as $pharmacy)
                     <div class="pharmacy-card">
                         <div class="pharmacy-logo">
-                            <img src="{{ $pharmacy->image ? asset('storage/' . $pharmacy->image->path) : asset('storage/pharmacy/pharma.png') }}" alt="{{ $pharmacy->name }} logo" />
+                            <img src="{{ $pharmacy->image ? asset('storage/pharmacy/' . $pharmacy->image->path) : asset('/pharmacy/pharma.png') }}"
+                                alt="{{ $pharmacy->name }} logo" />
                         </div>
                         <h3 class="pharmacy-name">{{ $pharmacy->name }}</h3>
                         <div class="pharmacy-info">
@@ -79,15 +80,19 @@
                             </div>
                         </div>
                         <div class="pharmacy-actions">
-                            <a href="{{ route('pharmacy.show', $pharmacy->id) }}" class="action-button details">المزيد</a>
+                            <a href="{{ route('pharmacy.show', $pharmacy->id) }}"
+                                class="action-button details">المزيد</a>
                             <div class="social-icons">
-                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Facebook">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Instagram">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Twitter">
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             </div>
@@ -131,7 +136,8 @@
                     <div class="article-content">
                         <span>📅 2025، 1 فبراير | <b>كبير</b></span>
                         <h3>اكتشف كنزًا من النصائح المعالجة لجسمك</h3>
-                        <p>استكشف مجموعة النصائح الطبية التي قد تساعدك على تحسين نمط حياتك اليومي. نحن هنا لدعمك بمعلومات أكثر صحة.</p>
+                        <p>استكشف مجموعة النصائح الطبية التي قد تساعدك على تحسين نمط حياتك اليومي. نحن هنا لدعمك
+                            بمعلومات أكثر صحة.</p>
                         <button class="btn-health">المزيد</button>
                     </div>
                 </div>
@@ -142,7 +148,8 @@
                     <div class="article-content">
                         <span>📅 2025، 1 فبراير | <b>كبير</b></span>
                         <h3>اكتشف كنزًا من النصائح المعالجة لجسمك</h3>
-                        <p>استكشف مجموعة النصائح الطبية التي قد تساعدك على تحسين نمط حياتك اليومي. نحن هنا لدعمك بمعلومات أكثر صحة.</p>
+                        <p>استكشف مجموعة النصائح الطبية التي قد تساعدك على تحسين نمط حياتك اليومي. نحن هنا لدعمك
+                            بمعلومات أكثر صحة.</p>
                         <button class="btn-health">المزيد</button>
                     </div>
                 </div>
@@ -151,7 +158,8 @@
                     <div class="article-content">
                         <span>📅 2025، 1 فبراير | <b>كبير</b></span>
                         <h3>اكتشف كنزًا من النصائح المعالجة لجسمك</h3>
-                        <p>استكشف مجموعة النصائح الطبية التي قد تساعدك على تحسين نمط حياتك اليومي. نحن هنا لدعمك بمعلومات أكثر صحة.</p>
+                        <p>استكشف مجموعة النصائح الطبية التي قد تساعدك على تحسين نمط حياتك اليومي. نحن هنا لدعمك
+                            بمعلومات أكثر صحة.</p>
                         <button class="btn-health">المزيد</button>
                     </div>
                 </div>
@@ -177,7 +185,8 @@
                 <div class="promotion-large">
                     <div class="promotional-product">
                         <div class="product-image-container">
-                            <img src="{{ asset('front/images/kara-sarimsak-yagi 1.png') }}" alt="زيت الثوم الأسود" class="product-image">
+                            <img src="{{ asset('front/images/kara-sarimsak-yagi 1.png') }}" alt="زيت الثوم الأسود"
+                                class="product-image">
                         </div>
                         <div class="product-details-last">
                             <div class="discount-tag">خصم 15%</div>
@@ -200,7 +209,8 @@
                 <div class="promotion-small-container">
                     <div class="promotional-product">
                         <div class="product-image-container">
-                            <img src="{{ asset('front/images/kara-sarimsak-yagi 1.png') }}" alt="مجموعة العناية بالأسنان" class="product-image">
+                            <img src="{{ asset('front/images/kara-sarimsak-yagi 1.png') }}"
+                                alt="مجموعة العناية بالأسنان" class="product-image">
                         </div>
                         <div class="product-details-last">
                             <div class="discount-tag">خصم 15%</div>
@@ -221,7 +231,8 @@
                     </div>
                     <div class="promotional-product">
                         <div class="product-image-container">
-                            <img src="{{ asset('front/images/kara-sarimsak-yagi 1.png') }}" alt="معجون أسنان بنكهة الموز" class="product-image">
+                            <img src="{{ asset('front/images/kara-sarimsak-yagi 1.png') }}"
+                                alt="معجون أسنان بنكهة الموز" class="product-image">
                         </div>
                         <div class="product-details-last">
                             <div class="discount-tag">خصم 15%</div>
@@ -251,7 +262,8 @@
                     <!-- Product Card 1 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="مقياس الأكسجين" class="product-image">
+                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="مقياس الأكسجين"
+                                class="product-image">
                         </div>
                         <h3 class="product-name">مقياس الأكسجين</h3>
                         <div class="product-price-row">
@@ -271,7 +283,8 @@
                     <!-- Product Card 2 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="قسطرة وريدية" class="product-image">
+                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="قسطرة وريدية"
+                                class="product-image">
                         </div>
                         <h3 class="product-name">قسطرة وريدية</h3>
                         <div class="product-price-row">
@@ -292,7 +305,8 @@
                     <div class="product-card">
                         <div class="discount-badge">خصم 10%</div>
                         <div class="product-image-wrapper">
-                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="جهاز ضغط" class="product-image">
+                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="جهاز ضغط"
+                                class="product-image">
                         </div>
                         <h3 class="product-name">جهاز ضغط</h3>
                         <div class="product-price-row">
@@ -312,7 +326,8 @@
                     <!-- Product Card 4 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="سماعة طبية" class="product-image">
+                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="سماعة طبية"
+                                class="product-image">
                         </div>
                         <h3 class="product-name">سماعة طبية</h3>
                         <div class="product-price-row">
@@ -322,7 +337,8 @@
                             <div class="product-rating">
                                 <span>4.5</span>
                                 <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                 </svg>
                             </div>
                         </div>
@@ -339,7 +355,8 @@
                     <div class="product-card">
                         <div class="discount-badge">خصم 10%</div>
                         <div class="product-image-wrapper">
-                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="جهاز قياس السكر" class="product-image">
+                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="جهاز قياس السكر"
+                                class="product-image">
                         </div>
                         <h3 class="product-name">جهاز قياس السكر</h3>
                         <div class="product-price-row">
@@ -360,7 +377,8 @@
                     <!-- Product Card 6 -->
                     <div class="product-card">
                         <div class="product-image-wrapper">
-                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="رباط طبي للركبة" class="product-image">
+                            <img src="{{ asset('front/images/Group 33560 (2).png') }}" alt="رباط طبي للركبة"
+                                class="product-image">
                         </div>
                         <h3 class="product-name">رباط طبي للركبة</h3>
                         <div class="product-price-row">
@@ -387,10 +405,14 @@
         <h2 class="section-title">الشركات الداعمة</h2>
         <div class="sponsors-container">
             <div class="sponsor-logo">
-                <a href=""><img src="{{ asset('front/images/download (6).png') }}" style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
-                <a href=""><img src="{{ asset('front/images/download (6).png') }}" style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
-                <a href=""><img src="{{ asset('front/images/download (6).png') }}" style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
-                <a href=""><img src="{{ asset('front/images/download (6).png') }}" style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
+                <a href=""><img src="{{ asset('front/images/download (6).png') }}"
+                        style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
+                <a href=""><img src="{{ asset('front/images/download (6).png') }}"
+                        style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
+                <a href=""><img src="{{ asset('front/images/download (6).png') }}"
+                        style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
+                <a href=""><img src="{{ asset('front/images/download (6).png') }}"
+                        style="height: 140px; width: 140px;" alt="بيرزيت للأدوية"></a>
             </div>
         </div>
     </section>
@@ -411,14 +433,17 @@
                             <span class="rating-value">4.5</span>
                         </div>
                     </div>
-                    <p class="testimonial-content">هذا النص مثال يمكن أن يستبدل بنفس المساحة المخصصة له هذا النص هذا النص مثال يمكن أن يستبدل بنفس المساحة المخصصة له هذا النص مثال يمكن أن يستبدل بنفس المساحة المخصصة له هذا</p>
+                    <p class="testimonial-content">هذا النص مثال يمكن أن يستبدل بنفس المساحة المخصصة له هذا النص هذا
+                        النص مثال يمكن أن يستبدل بنفس المساحة المخصصة له هذا النص مثال يمكن أن يستبدل بنفس المساحة
+                        المخصصة له هذا</p>
                     <div class="testimonial-author">
                         <div class="quote-icon">❝</div>
                         <div class="author-info">
                             <p class="author-name">أحمد عبد الخالدي</p>
                             <p class="author-position">مدير عام - 20 يناير 2023</p>
                         </div>
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="أحمد عبد الخالدي" class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="أحمد عبد الخالدي"
+                            class="author-avatar">
                     </div>
                 </div>
                 <!-- Testimonial Card (Hidden initially) -->
@@ -433,14 +458,16 @@
                             <span class="rating-value">4.8</span>
                         </div>
                     </div>
-                    <p class="testimonial-content">خدمة ممتازة وفريق عمل متميز، استفدت كثيرًا من التجربة. أنصح الجميع بالتعامل معهم لتحقيق أفضل النتائج في وقت قياسي.</p>
+                    <p class="testimonial-content">خدمة ممتازة وفريق عمل متميز، استفدت كثيرًا من التجربة. أنصح الجميع
+                        بالتعامل معهم لتحقيق أفضل النتائج في وقت قياسي.</p>
                     <div class="testimonial-author">
                         <div class="quote-icon">❝</div>
                         <div class="author-info">
                             <p class="author-name">عمر سمير</p>
                             <p class="author-position">مستشار تقني - 15 فبراير 2023</p>
                         </div>
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="عمر سمير" class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="عمر سمير"
+                            class="author-avatar">
                     </div>
                 </div>
                 <!-- Testimonial Card (Hidden initially) -->
@@ -455,25 +482,31 @@
                             <span class="rating-value">4.7</span>
                         </div>
                     </div>
-                    <p class="testimonial-content">سرعة في التنفيذ ودقة في العمل. تجربة مميزة من البداية للنهاية، وإن شاء الله سنتعاون مرة أخرى قريبًا.</p>
+                    <p class="testimonial-content">سرعة في التنفيذ ودقة في العمل. تجربة مميزة من البداية للنهاية، وإن
+                        شاء الله سنتعاون مرة أخرى قريبًا.</p>
                     <div class="testimonial-author">
                         <div class="quote-icon">❝</div>
                         <div class="author-info">
                             <p class="author-name">سارة العبيدي</p>
                             <p class="author-position">مديرة تسويق - 5 مارس 2023</p>
                         </div>
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="سارة العبيدي" class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="سارة العبيدي"
+                            class="author-avatar">
                     </div>
                 </div>
             </div>
             <div class="testimonial-navigation">
                 <button id="prev-btn" class="nav-arrow-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                 </button>
                 <button id="next-btn" class="nav-arrow-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </button>
@@ -507,25 +540,28 @@
     <!-- إضافة jQuery وملف JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('front/js/script.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#locationSelector').on('change', function() {
-                var location = $(this).val();
-                $.ajax({
-                    url: '{{ route("pharmacies.by.location", "") }}/' + location,
-                    method: 'GET',
-                    success: function(response) {
-                        $('#pharmacyCards').html(response.html);
-                        // تحديث الـ pagination بناءً على عدد الصيدليات المسترجعة
-                        var totalCards = $(response.html).filter('.pharmacy-card').length;
-                        var pages = Math.ceil(totalCards / 5);
-                        $('#paginationText').text('1 / ' + (pages > 0 ? pages : 1));
-                    },
-                    error: function(xhr) {
-                        console.log('Error:', xhr);
-                    }
+
+    @section('js')
+        <script>
+            $(document).ready(function() {
+                $('#locationSelector').on('change', function() {
+                    var location = $(this).val();
+                    $.ajax({
+                        url: '{{ route('pharmacies.by.location', '') }}/' + location,
+                        method: 'GET',
+                        success: function(response) {
+                            $('#pharmacyCards').html(response.html);
+                            // تحديث الـ pagination بناءً على عدد الصيدليات المسترجعة
+                            var totalCards = $(response.html).filter('.pharmacy-card').length;
+                            var pages = Math.ceil(totalCards / 5);
+                            $('#paginationText').text('1 / ' + (pages > 0 ? pages : 1));
+                        },
+                        error: function(xhr) {
+                            console.log('Error:', xhr);
+                        }
+                    });
                 });
             });
-        });
-    </script>
+        </script>
+    @endsection
 </x-front.main>

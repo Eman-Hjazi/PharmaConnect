@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <x-front.main :pharmacy="$pharmacy" :categories="$categories">
     <link rel="stylesheet" href="{{ asset('front/css/pharma.css') }}">
 
@@ -39,7 +33,7 @@
                     </div>
                 </div>
                 <div class="pharmacy-logo">
-                    <img src="{{ $pharmacy->image ? asset('storage/' . $pharmacy->image->path) : asset('storage/pharmacy/pharma.png') }}"
+                    <img src="{{ $pharmacy->image ? asset('storage/pharmacy/' . $pharmacy->image->path) : asset('storage/pharmacy/pharma.png') }}"
                         alt="شعار {{ $pharmacy->name }}" class="logo-image">
                 </div>
             </div>
@@ -69,7 +63,8 @@
                     <div class="product-image-container">
                         <img src="{{ $inventory->medicine->image ? asset('storage/' . $inventory->medicine->image->path) : asset('storage/medicines' . '/default-medicine.jpg') }}"
                             alt="{{ $inventory->medicine->name }}" class="product-image">
-                        <div class="product-badge badge-{{ $inventory->status === 'نفذ' ? 'sold-out' : 'available' }}">
+                        <div
+                            class="product-badge badge-{{ $inventory->status === 'قليل' ? 'sold-out' : 'available' }}">
                             {{ $inventory->status }}
                         </div>
                         <button class="favorite-button" data-id="{{ $inventory->id }}">
@@ -133,84 +128,84 @@
 
 
 
-    <script src="{{ asset('front/js/pharma.js') }}"></script>
+    @section('js')
+        <script src="{{ asset('front/js/pharma.js') }}"></script>
 
-    <script>
-        document.querySelectorAll('.cart-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Button clicked!');
-                const inventoryId = this.getAttribute('data-id'); // الحصول على inventoryId من data-id
+        <script>
+            document.querySelectorAll('.cart-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Button clicked!');
+                    const inventoryId = this.getAttribute('data-id'); // الحصول على inventoryId من data-id
 
-                fetch('/check-auth', {
-                        method: 'GET',
-                        headers: {
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                .getAttribute('content')
-                        }
-                    })
-                    .then(response => {
-                        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Response:', data);
-                        if (data.authenticated) {
-                            console.log('User is authenticated, redirecting to cart.show...');
-                            // التوجيه إلى مسار cart.show مع تمرير inventoryId
-                            window.location.href = '/cart/show/' + inventoryId;
-                        } else {
-                            console.log('User is not authenticated, showing modal...');
-                            showModal();
-                        }
-                    })
-                    .catch(error => console.error('Fetch error:', error));
+                    fetch('/check-auth', {
+                            method: 'GET',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                    .getAttribute('content')
+                            }
+                        })
+                        .then(response => {
+                            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Response:', data);
+                            if (data.authenticated) {
+                                console.log('User is authenticated, redirecting to cart.show...');
+                                // التوجيه إلى مسار cart.show مع تمرير inventoryId
+                                window.location.href = '/cart/show/' + inventoryId;
+                            } else {
+                                console.log('User is not authenticated, showing modal...');
+                                showModal();
+                            }
+                        })
+                        .catch(error => console.error('Fetch error:', error));
+                });
             });
-        });
 
-        function showModal() {
-            console.log('Showing modal');
-            const modal = document.getElementById('authModal');
-            if (modal) {
-                console.log('Modal found, adding active class');
-                modal.classList.add('active');
-            } else {
-                console.error('Modal element #authModal not found!');
-            }
-        }
-
-        document.querySelector('.modal-close')?.addEventListener('click', function() {
-            const modal = document.getElementById('authModal');
-            if (modal) modal.classList.remove('active');
-        });
-
-        document.getElementById('authModal')?.addEventListener('click', function(e) {
-            const modal = document.getElementById('authModal');
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
-
-        // دالة البحث (لا تتغير)
-        function searchMedicines() {
-            let input = document.getElementById("searchInput").value.toLowerCase();
-            let cards = document.getElementById("productGrid").getElementsByClassName("product-card");
-
-            for (let i = 0; i < cards.length; i++) {
-                let nameElement = cards[i].getElementsByClassName("product-name")[0];
-                let descriptionElement = cards[i].getElementsByClassName("product-meta")[0].getElementsByTagName("span")[0];
-                let name = nameElement ? nameElement.innerText.toLowerCase() : '';
-                let description = descriptionElement ? descriptionElement.innerText.toLowerCase() : '';
-
-                if (name.includes(input) || description.includes(input)) {
-                    cards[i].style.display = "";
+            function showModal() {
+                console.log('Showing modal');
+                const modal = document.getElementById('authModal');
+                if (modal) {
+                    console.log('Modal found, adding active class');
+                    modal.classList.add('active');
                 } else {
-                    cards[i].style.display = "none";
+                    console.error('Modal element #authModal not found!');
                 }
             }
-        }
-    </script>
+
+            document.querySelector('.modal-close')?.addEventListener('click', function() {
+                const modal = document.getElementById('authModal');
+                if (modal) modal.classList.remove('active');
+            });
+
+            document.getElementById('authModal')?.addEventListener('click', function(e) {
+                const modal = document.getElementById('authModal');
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // دالة البحث (لا تتغير)
+            function searchMedicines() {
+                let input = document.getElementById("searchInput").value.toLowerCase();
+                let cards = document.getElementById("productGrid").getElementsByClassName("product-card");
+
+                for (let i = 0; i < cards.length; i++) {
+                    let nameElement = cards[i].getElementsByClassName("product-name")[0];
+                    let descriptionElement = cards[i].getElementsByClassName("product-meta")[0].getElementsByTagName("span")[0];
+                    let name = nameElement ? nameElement.innerText.toLowerCase() : '';
+                    let description = descriptionElement ? descriptionElement.innerText.toLowerCase() : '';
+
+                    if (name.includes(input) || description.includes(input)) {
+                        cards[i].style.display = "";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+    @endsection
 </x-front.main>
-
-

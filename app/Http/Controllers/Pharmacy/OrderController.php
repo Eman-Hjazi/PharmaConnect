@@ -36,6 +36,7 @@ class OrderController extends Controller
             ->where('destination_type', 'App\Models\Pharmacy')
             ->where('orderable_type', 'App\Models\User')
             ->with('orderDetails.medicine')
+            ->with('orderDetails.medicine', 'image') // جيب الصور مع الطلبات
             ->paginate(10);
 
         return view('pharmacy.orders.customer-orders', compact('orders'));

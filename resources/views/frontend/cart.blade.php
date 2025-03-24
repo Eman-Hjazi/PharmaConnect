@@ -1,270 +1,4 @@
 {{-- <x-front.main>
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        font-family: Arial, sans-serif;
-        direction: rtl;
-        background-color: #f9f9f9;
-        margin: 0;
-        padding: 0;
-    }
-
-
-    .cart-container {
-        display: flex;
-        justify-content: space-between;
-        max-width: 900px;
-        margin: 50px auto;
-        gap: 20px;
-        margin-top: 100px;
-    }
-
-    .cart-items {
-        background: white;
-        flex: 2;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .cart-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 0;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .cart-item img {
-        width: 60px;
-        height: 60px;
-        border-radius: 5px;
-    }
-
-    .item-details p {
-        font-weight: bold;
-    }
-
-    .item-details {
-        flex: 1;
-        padding: 0 10px;
-    }
-
-    .quantity {
-        display: flex;
-        align-items: center;
-    }
-
-    .quantity button {
-        width: 25px;
-        height: 25px;
-        background-color: white;
-        color: black border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin: 0 5px;
-    }
-
-    .price {
-        font-weight: bold;
-        margin-left: 100px;
-    }
-
-    .remove {
-        background: none;
-        border: none;
-        font-size: 18px;
-        cursor: pointer;
-        color: rgba(97, 97, 97, 0.8)
-    }
-
-
-    .coupon {
-        background: #e6f2ff;
-        flex: 1;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .coupon p {
-        color: rgba(97, 97, 97, 0.8)
-    }
-
-    .coupon h3 {
-        margin-bottom: 10px;
-    }
-
-    .coupon-section {
-        display: flex;
-        gap: 5px;
-        margin-bottom: 15px;
-    }
-
-    .coupon-section input {
-        flex: 1;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .coupon-section button {
-        background: #007bff;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .coupon p {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .coupon-value {
-        text-align: left;
-        flex: 1;
-        color: rgba(97, 97, 97, 0.8);
-    }
-
-    .pay-button {
-        width: 100%;
-        background: #007bff;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .number {
-        color: black;
-    }
-
-    .section-left {
-        margin-top: 50px;
-
-
-    }
-
-    .subscribe-section {
-        text-align: right;
-    }
-
-    .subscribe-section input {
-        width: 100%;
-        max-width: 300px;
-        padding: 10px 15px;
-        border: 1px solid #ddd;
-        border-radius: 20px;
-        margin-bottom: 10px;
-        outline: none;
-        font-size: 14px;
-    }
-
-    .subscribe-section button {
-        padding: 10px 20px;
-        background-color: #ffa500;
-        border: none;
-        border-radius: 20px;
-        color: white;
-        font-size: 14px;
-        cursor: pointer;
-    }
-
-    .social-icons {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-start;
-        margin-top: 15px;
-    }
-
-    .social-icons a {
-        color: #007BFF;
-        font-size: 20px;
-        text-decoration: none;
-    }
-
-    .payment-logos img {
-        height: 30px;
-        margin-right: 10px;
-    }
-
-    .cart-title {
-        margin-top: 50px;
-        margin-right: 50px;
-        color: #007bff;
-    }
-</style>
-
-<div class="cart-container">
-    <div class="cart-items">
-
-        <div class="cart-item">
-            <img src="images/f.png" alt="فيوزكس 2.5 مجم 60 قرص">
-            <div class="item-details">
-                <p>فيوزكس 2.5 مجم 60 قرص</p>
-                <div class="quantity">
-                    <button>+</button>
-                    <span>6</span>
-                    <button>-</button>
-                </div>
-            </div>
-            <span class="price">48.00 ₪</span>
-            <button class="remove">×</button>
-        </div>
-
-        <div class="cart-item">
-            <img src="images/f.png" alt="فيوزكس 2.5 مجم 60 قرص">
-            <div class="item-details">
-                <p>فيوزكس 2.5 مجم 60 قرص</p>
-                <div class="quantity">
-                    <button>+</button>
-                    <span>6</span>
-                    <button>-</button>
-                </div>
-            </div>
-            <span class="price">48.00 ₪</span>
-            <button class="remove">×</button>
-        </div>
-
-        <div class="cart-item">
-            <img src="images/f.png" alt="فيوزكس 2.5 مجم 60 قرص">
-            <div class="item-details">
-                <p>فيوزكس 2.5 مجم 60 قرص</p>
-                <div class="quantity">
-                    <button>+</button>
-                    <span>6</span>
-                    <button>-</button>
-                </div>
-            </div>
-            <span class="price">48.00 ₪</span>
-            <button class="remove">×</button>
-        </div>
-    </div>
-    <section class="section-left">
-        <div class="coupon">
-            <h3>قائمة الكوبون</h3>
-            <div class="coupon-section">
-                <input type="text" placeholder=" كوبون خصم">
-                <button>حفظ</button>
-            </div>
-
-            <h3>الفاتورة</h3>
-            <p>مجموع المنتجات: <span class="coupon-value"> <span class="number">268.00</span> ₪</span></p>
-            <p> الشحن: <span class="coupon-value"> <span class="number">20.00</span> ₪ </span></p>
-            <p class="total">الإجمالي: <span class="coupon-value"> <span class="number">288.00</span> ₪ </span></p>
-            <button class="pay-button">ادفع</button>
-    </section>
-
-</div>
-</x-front.main> --}}
-
-
-<x-front.main>
     <style>
         body {
             display: flex;
@@ -303,9 +37,12 @@
         }
 
         .cart-item img {
-            width: 60px;
-            height: 60px;
+            width: 200px;
+            height: auto;
             border-radius: 5px;
+            object-fit: cover;
+
+
         }
 
         .item-details p {
@@ -633,4 +370,96 @@
         });
     </script>
 
+</x-front.main> --}}
+
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('front/css/cart.css') }}">
+@endsection
+<x-front.main>
+
+    <div class="cart-container">
+        <div class="cart-items">
+            @forelse ($carts as $cart)
+                <div class="cart-item" data-id="{{ $cart->id }}"
+                    data-base-price="{{ $cart->pharmacyInventory->selling_price }}">
+                    <img src="{{ $cart->pharmacyInventory->medicine->image ? asset('storage/' . $cart->pharmacyInventory->medicine->image->path) : asset('storage/medicines/default-medicine.jpg') }}"
+                        alt="{{ $cart->pharmacyInventory->medicine->name }}">
+                    <div class="item-details">
+                        <p>{{ $cart->pharmacyInventory->medicine->name }}</p>
+                        <div class="quantity">
+                            <button class="increase">+</button>
+                            <span class="quantity-value">{{ $cart->quantity }}</span>
+                            <button class="decrease">-</button>
+                        </div>
+                    </div>
+                    <span
+                        class="price">{{ number_format($cart->quantity * $cart->pharmacyInventory->selling_price, 2) }}
+                        ₪</span>
+                    <button class="remove">×</button>
+                </div>
+            @empty
+            @endforelse
+        </div>
+
+        <section class="section-left">
+            <div class="coupon">
+                <h3>قائمة الكوبون</h3>
+                <div class="coupon-section">
+                    <input type="text" placeholder="كوبون خصم">
+                    <button>حفظ</button>
+                </div>
+
+                <h3>الفاتورة</h3>
+                <p>مجموع المنتجات: <span class="coupon-value"><span
+                            class="number subtotal">{{ number_format($subtotal, 2) }}</span> ₪</span></p>
+                <p>الشحن: <span class="coupon-value"><span
+                            class="number shipping">{{ number_format($shipping, 2) }}</span> ₪</span></p>
+                <p class="total">الإجمالي: <span class="coupon-value"><span
+                            class="number total">{{ number_format($total, 2) }}</span> ₪</span></p>
+                <button class="pay-button" id="order-now">طلب الآن</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- السلة الفارغة -->
+    <div class="salaemp">
+        <div class="cart-container">
+            <div class="cart-icon">
+                <img src="{{ asset('front/images/emptysala.png') }}" alt="سله فارغة">
+            </div>
+            <div class="cart-message">سلة مشترياتك فارغة حالياً!</div>
+            <div class="cart-description">
+                قبل الشروع في الدفع، يجب عليك إضافة بعض المنتجات إلى عربة التسوق الخاصة بك.<br>
+                سوف تجد الكثير من المنتجات الشيقة على <a href="{{ route('home') }}">صفحة التسوق</a> الخاصة
+                بنا.
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal لرفع الروشتة -->
+    <div class="modal" id="prescription-modal">
+        <div class="modal-content">
+            <h3>يرجى إدخال صورة الروشتة</h3>
+            <form id="prescription-form" action="{{ route('order.store') }}" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="prescription" accept="image/*" required>
+                <button type="submit">إرسال</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal لتأكيد الطلب -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <h3>تم تقديم طلبك بنجاح!</h3>
+            <p>شكرًا لك، سيتم مراجعة الروشتة وتأكيد الطلب قريبًا.</p>
+            <a href="{{ route('home') }}">العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+
+    @section('js')
+        <script src="{{ asset('front/js/cart.js') }}"></script>
+    @endsection
 </x-front.main>
